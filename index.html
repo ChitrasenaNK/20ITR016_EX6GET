@@ -1,0 +1,173 @@
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+        <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body style="background-color: teal ;">
+        <h4 style="color:white ; font-family: 'Courier New', Courier, monospace; text-align: center; margin-top: 10px;"><b>FILL THIS FORM</b></h4>
+       
+        <div class="row mt-5 ">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 p-4" style="background-color: white;">
+            <form name="myform" action="http://localhost:8080" method="get" name="myform"onsubmit="return validate()">
+               <div class="row">
+                   <div class="col-sm-6">
+                    <b>Name:</b>
+                    <br> <input type="text" name="name" id="nn" >
+                   </div>
+                   <div class="col-sm-6">
+                    <b>Mail:</b><br>  <input type="text" id="e" name="email">
+
+                   </div>
+               </div> <br>
+               <div class="row">
+                <div class="col-sm-6">
+                    <b>UserName:</b><br>  <input type="text" name="uname" id="n"> 
+                </div>
+                <div class="col-sm-6">
+                    <b>Password:</b><br>  <input type="password" name="pass" id="n1"> 
+
+                </div>
+            </div>      <br>  
+            <div class="row">
+                <div class="col-sm-6">
+                    <b>Gender: </b><input type="radio" id="g1" name="gender" value="male">Male
+                    <input type="radio" id="g2" name="gender" value="Female">Female 
+                </div>
+                <div class="col-sm-6">
+                    <b>Select your city:</b> <select name="city" id="city">
+                        <option value="None">None</option>
+                        <option value="Erode">Erode</option>
+                        <option value="Cbe">Cbe</option> 
+                    </select>
+
+                </div>
+            </div>               
+                 
+                <br>  
+               <b>Events:</b><br> <input type="checkbox" name="check1" id="c1" value="drama">Drama<br>
+               <input type="checkbox" name="check2" id="c2" value="singing">Singing<br>
+               <input type="checkbox" name="check3" id="c3" value="dancing"> Dancing<br>
+               
+               <b>Address</b><br><textarea name="addr" id="a1" class="form-control" cols="20" rows="3"></textarea>
+               <b>Mobile Number:<br> </b><input type="text" name="phno" id="p1">   <br><br>
+               <input type="submit" value="SUBMIT" class="btn btn-danger">
+
+            </form>
+
+        </div>
+        <div class="col-sm-4"></div>
+        </div>               
+      
+        
+
+                
+        
+        <script type="text/javascript">
+           function validate()
+           {
+             var name=document.getElementById("nn").value;
+            
+            var n1=/^[A-z\.]+$/;
+            var result=n1.test(name);
+        
+            if(!result)
+            {
+                alert("please check your name");
+        
+                return false;
+                
+            }
+            var u=document.getElementById("n").value;
+                
+                let pattern=/^[a-z]{8,10}[_#@0-9]+$/;
+                var u2=pattern.test(u);
+            if(!u2)
+            {
+                    alert("Enter username correctly");
+                    return false;
+            }
+
+                var p=document.getElementById("n1").value;
+                let p1=/^[A-z0-9]{10,12}$/;
+                var p2=p1.test(p);
+             if(p.length>12)
+            {
+                alert("Password should not exceed 12 characters");
+                document.myform.pass.focus();
+                return false;
+            }
+             if(!p2)
+            {
+                alert("Enter valid password");
+                document.myform.pass.focus();
+                return false;
+            }
+            
+            
+                var e=document.getElementById("e").value;
+                let e1=/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+                var e2=e1.test(e);
+            if(!e2)
+            {
+                    alert("enter valid mail");
+                    document.myform.email.focus();
+                    return false;
+            }
+            if(document.getElementById("g1").checked==false && document.getElementById("g2").checked==false)
+            {
+                    
+                    alert("please select gender");
+                    return false;
+            }
+            var sel=document.getElementById("city");
+                var selectedText=sel.options[sel.selectedIndex].text;
+                
+            if(selectedText=="None")
+            {
+                alert("please select city!!");
+                return false;
+            }
+            if(document.getElementById("c1").checked==false && document.getElementById("c2").checked==false && document.getElementById("c3").checked==false)
+            {
+                    alert("Please Select the event");
+                    return false;
+                    
+            }
+                
+            
+            var a=document.getElementById("a1").value;
+            if(a.length==0)
+            {
+                alert("Please enter address");
+                return false;
+            }
+                
+                var ph=document.getElementById("p1").value;
+                var ph1=/^\d{10}$/;
+                var ph2=ph1.test(ph);
+            if(!ph2)
+            {
+                    alert("Enter proper mobile number");
+                    return false;
+            }
+                
+            
+               
+            
+            
+          }
+            
+            
+
+           
+        </script>
+
+    </body>
+</html>
+
+
+
+
+
